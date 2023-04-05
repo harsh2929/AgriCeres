@@ -1,3 +1,3 @@
-# AgroCeres
+# AgriCeres
 
 
