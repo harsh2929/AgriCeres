@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'splash_page.dart';
+import 'package:sidebarx/sidebarx.dart';
+// import 'core/services/service_locator.dart';
+// import 'core/widgets/home_layout.dart';
+// import 'core/util/themes.dart';
+import 'package:flutter/material.dart';
+import 'functionality.dart';
 
 void main() {
   runApp(const MyApp());

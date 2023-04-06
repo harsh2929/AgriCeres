@@ -3,9 +3,10 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'functionality.dart';
 import 'encyclopedia_screen.dart';
 import 'home_screen.dart';
+import 'package:flutter/services.dart';
 
 class AppInfoScreen extends StatefulWidget {
   const AppInfoScreen({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class AppInfoScreen extends StatefulWidget {
 }
 
 class _AppInfoScreenState extends State<AppInfoScreen> {
-  Color backgroundColor = Color.fromARGB(255, 45, 228, 39);
+  Color backgroundColor = Color.fromARGB(255, 74, 230, 74);
   Color secondaryColor = Color.fromARGB(255, 3, 105, 35);
   Color accentColor = Color.fromARGB(255, 36, 169, 213);
 
@@ -44,12 +45,20 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
             );
           }
           if (index == 2) {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => AppInfoScreen(),
-            //   ),
-            // );
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AppInfoScreen(),
+              ),
+            );
+          }
+          if (index == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Functionality(),
+              ),
+            );
           }
         },
         index: 2,
@@ -96,14 +105,14 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SvgPicture.asset(
-                        'assets/app_icon.svg',
+                        'assets/download.svg',
                         width: 30,
                         height: 30,
                       ),
                       Container(
                         padding: const EdgeInsets.all(10),
                         child: const Text(
-                          "AgroLab",
+                          "AgroCeres",
                           style: TextStyle(
                             fontFamily: 'odibeeSans',
                             fontSize: 25,
@@ -116,7 +125,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                 Container(
                   padding: const EdgeInsets.all(10),
                   child: SvgPicture.asset(
-                    'assets/tensorflow-icontext.svg',
+                    'assets/googleamd.svg',
                     width: 40,
                     height: 40,
                   ),
@@ -136,7 +145,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                           depth: 20,
                         ),
                         child: Text(
-                          'Our Team',
+                          'About AgroCeres',
                           style: TextStyle(
                             fontFamily: 'odibeeSans',
                             fontSize: 35,

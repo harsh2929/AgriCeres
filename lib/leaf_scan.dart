@@ -10,7 +10,7 @@ import 'package:AgroLab/encyclopedia_screen.dart';
 import 'package:AgroLab/home_screen.dart';
 import 'package:tflite/tflite.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'functionality.dart';
 import 'app_info_screen.dart';
 
 class LeafScan extends StatefulWidget {
@@ -195,6 +195,14 @@ class _LeafScanState extends State<LeafScan> {
               context,
               MaterialPageRoute(
                 builder: (context) => AppInfoScreen(),
+              ),
+            );
+          }
+          if (index == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Functionality(),
               ),
             );
           }
@@ -417,7 +425,7 @@ class _LeafScanState extends State<LeafScan> {
                                 left: 5,
                               ),
                               child: Text(
-                                'The image must be well lit and clear',
+                                'Please try to keep the image clear and in a well-lit area',
                                 style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w500,
@@ -446,7 +454,7 @@ class _LeafScanState extends State<LeafScan> {
                               child: Container(
                                 padding: EdgeInsets.fromLTRB(5, 0, 10, 0),
                                 child: Text(
-                                  "Images other than the specific plant's leaves may lead to inaccurate results",
+                                  "Since the app is in beta mode therefore some images may end up being wrongly classified",
                                   softWrap: true,
                                   maxLines: 10,
                                   style: TextStyle(

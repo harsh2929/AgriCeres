@@ -42,7 +42,16 @@ dependencies:
   flutter_svg: ^1.0.3
   url_launcher: ^6.1.5
   easy_splash_screen: ^1.0.3
-
+  dio: ^5.0.0
+  dartz: ^0.10.1
+  get_it: ^7.2.0
+  equatable: ^2.0.5
+  flutter_bloc: ^8.1.2
+  google_nav_bar: ^5.0.6
+  tflite_flutter: ^0.9.0
+  sidebarx: ^0.15.0
+  foldable_sidebar: ^1.0.0
+  animated_sidebar: ^1.0.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'app_info_screen.dart';
 import 'home_screen.dart';
+import 'functionality.dart';
 
 class Encyclopedia extends StatefulWidget {
   const Encyclopedia({Key? key}) : super(key: key);
@@ -15,9 +16,9 @@ class Encyclopedia extends StatefulWidget {
 }
 
 class _EncyclopediaState extends State<Encyclopedia> {
-  Color backgroundColor = const Color(0xffe9edf1);
-  Color secondaryColor = const Color(0xffe1e6ec);
-  Color accentColor = const Color(0xff2d5765);
+  Color backgroundColor = Color.fromARGB(255, 45, 228, 39);
+  Color secondaryColor = Color.fromARGB(255, 3, 105, 35);
+  Color accentColor = Color.fromARGB(255, 36, 169, 213);
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +29,12 @@ class _EncyclopediaState extends State<Encyclopedia> {
           //todo implement transition to other screens
           // print(index);
           if (index == 0) {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => Encyclopedia(),
-            //   ),
-            // );
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Encyclopedia(),
+              ),
+            );
           }
           if (index == 1) {
             Navigator.push(
@@ -48,6 +49,14 @@ class _EncyclopediaState extends State<Encyclopedia> {
               context,
               MaterialPageRoute(
                 builder: (context) => const AppInfoScreen(),
+              ),
+            );
+          }
+          if (index == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Functionality(),
               ),
             );
           }
