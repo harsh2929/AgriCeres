@@ -60,7 +60,7 @@ class _LeafScanState extends State<LeafScan> {
     } else if (modelName.toLowerCase() == "rice") {
       return 'models/Rice';
     } else if (modelName.toLowerCase() == "tomato") {
-      return 'lib/bird.dart';
+      return 'models/Tomato';
     } else {
       return "";
     }

@@ -1,3 +1,4 @@
+import 'package:AgroLab/LoginPage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -7,6 +8,8 @@ import 'package:AgroLab/leaf_scan.dart';
 import 'functionality.dart';
 import 'app_info_screen.dart';
 import 'encyclopedia_screen.dart';
+import 'farmcalc.dart';
+import 'callhelp.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -114,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Container(
                         padding: const EdgeInsets.all(10),
                         child: const Text(
-                          "AgroLab",
+                          "",
                           style: TextStyle(
                             fontFamily: 'odibeeSans',
                             fontSize: 25,
@@ -162,14 +165,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SvgPicture.asset(
-                          'assets/apple-svgrepo-com.svg',
+                          'assets/banking.svg',
                           width: 50,
                           height: 50,
                         ),
                         Container(
                           margin: const EdgeInsets.only(top: 10),
                           child: const Text(
-                            'Apple',
+                            'Banking',
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w500,
@@ -230,7 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SvgPicture.asset(
-                          'assets/cherry-svgrepo-com(1).svg',
+                          'assets/txtdetect.svg',
                           width: 50,
                           height: 50,
                         ),
@@ -388,7 +391,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const LeafScan(modelName: 'Rice'),
+                        builder: (context) =>
+                            FarmProduceProfitCalculator(), // Replace with the login page widget
                       ),
                     );
                   },
@@ -398,14 +402,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SvgPicture.asset(
-                          'assets/sheaf-of-rice-svgrepo-com(1).svg',
+                          'assets/potato-svgrepo-com.svg',
                           width: 50,
                           height: 50,
                         ),
                         Container(
                           margin: const EdgeInsets.only(top: 10),
                           child: const Text(
-                            'Rice',
+                            'Potato',
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w500,
@@ -422,7 +426,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            const LeafScan(modelName: 'Tomato'),
+                            AgricultureHelplinePage(), // Replace with the login page widget
                       ),
                     );
                   },
@@ -432,14 +436,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SvgPicture.asset(
-                          'assets/tomato-svgrepo-com.svg',
+                          'assets/potato-svgrepo-com.svg',
                           width: 50,
                           height: 50,
                         ),
                         Container(
                           margin: const EdgeInsets.only(top: 10),
                           child: const Text(
-                            'Tomato',
+                            'Get Help',
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w500,

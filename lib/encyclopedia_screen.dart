@@ -112,7 +112,7 @@ class _EncyclopediaState extends State<Encyclopedia> {
                       Container(
                         padding: const EdgeInsets.all(10),
                         child: const Text(
-                          "AgroLab",
+                          "",
                           style: TextStyle(
                             fontFamily: 'odibeeSans',
                             fontSize: 25,
@@ -125,7 +125,7 @@ class _EncyclopediaState extends State<Encyclopedia> {
                 Container(
                   padding: const EdgeInsets.all(10),
                   child: SvgPicture.asset(
-                    'assets/tensorflow-icontext.svg',
+                    'assets/googleamd.svg',
                     width: 40,
                     height: 40,
                   ),
@@ -133,7 +133,7 @@ class _EncyclopediaState extends State<Encyclopedia> {
               ],
             ),
             LottieBuilder.asset(
-              'assets/58375-plantas-y-hojas.json',
+              'assets/89762-helpdesk-blue.json',
               width: 400,
               height: 100,
             ),
@@ -196,7 +196,7 @@ class _EncyclopediaState extends State<Encyclopedia> {
                               left: 5,
                             ),
                             child: NeumorphicText(
-                              'Read more about crop diseases and preventive care measures',
+                              'Government Schemes and Policies',
                               style: const NeumorphicStyle(
                                 color: Colors.black,
                                 // color: Colors.green.shade800,
@@ -245,7 +245,7 @@ class _EncyclopediaState extends State<Encyclopedia> {
                                     left: 20,
                                   ),
                                   child: Text(
-                                    'PM Fasal Bima Yojana',
+                                    '',
                                     style: TextStyle(
                                       color: backgroundColor,
                                       fontSize: 15,
@@ -268,7 +268,7 @@ class _EncyclopediaState extends State<Encyclopedia> {
                               height: 130,
                               decoration: BoxDecoration(
                                 image: const DecorationImage(
-                                  image: AssetImage('assets/ebellpepper.jpg'),
+                                  image: AssetImage('assets/pmky.png'),
                                   fit: BoxFit.cover,
                                 ),
                                 borderRadius: BorderRadius.circular(15),
@@ -287,7 +287,7 @@ class _EncyclopediaState extends State<Encyclopedia> {
                                     left: 20,
                                   ),
                                   child: Text(
-                                    'PM Kisan Samman Nidhi Yojana',
+                                    '',
                                     style: TextStyle(
                                       color: backgroundColor,
                                       fontSize: 15,

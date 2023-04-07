@@ -52,6 +52,9 @@ dependencies:
   sidebarx: ^0.15.0
   foldable_sidebar: ^1.0.0
   animated_sidebar: ^1.0.1
+  flutter_spinkit: "^4.1.2"
+  flutter_boom_menu: ^1.0.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

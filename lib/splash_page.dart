@@ -24,7 +24,7 @@ class _SplashPageState extends State<SplashPage> {
     return EasySplashScreen(
       logo: Image.asset('assets/app_icon.png'),
       title: const Text(
-        "\nएग्रोसेरेस\n অগ্রসেরেস\nஅஃப்ரோஸ்ப்ரெஸ்\nએગ્રોસેરેસ\n",
+        "\nएग्रोसेरेस\n অগ্রসেরেস\n அஃப்ரோஸ்ப்ரெஸ்\n એગ્રોસેરેસ\n",
         style: TextStyle(
           fontSize: 35,
           fontFamily: 'odibeeSans',

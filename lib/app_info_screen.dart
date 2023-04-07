@@ -16,9 +16,9 @@ class AppInfoScreen extends StatefulWidget {
 }
 
 class _AppInfoScreenState extends State<AppInfoScreen> {
-  Color backgroundColor = Color.fromARGB(255, 74, 230, 74);
+  Color backgroundColor = Color.fromARGB(255, 46, 224, 244);
   Color secondaryColor = Color.fromARGB(255, 3, 105, 35);
-  Color accentColor = Color.fromARGB(255, 36, 169, 213);
+  Color accentColor = Color.fromARGB(255, 238, 245, 45);
 
   @override
   Widget build(BuildContext context) {
@@ -105,14 +105,14 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SvgPicture.asset(
-                        'assets/download.svg',
+                        'assets/app_icon.svg',
                         width: 30,
                         height: 30,
                       ),
                       Container(
                         padding: const EdgeInsets.all(10),
                         child: const Text(
-                          "AgroCeres",
+                          "",
                           style: TextStyle(
                             fontFamily: 'odibeeSans',
                             fontSize: 25,
@@ -138,23 +138,24 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                   Column(
                     children: [
                       Neumorphic(
-                        padding: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 140, vertical: 20),
                         style: NeumorphicStyle(
                           color: accentColor,
                           intensity: 20,
                           depth: 20,
                         ),
                         child: Text(
-                          'About AgroCeres',
+                          'App Wiki',
                           style: TextStyle(
-                            fontFamily: 'odibeeSans',
-                            fontSize: 35,
+                            fontFamily: 'Merriweather',
+                            fontSize: 25,
                             color: backgroundColor,
                           ),
                         ),
                       ),
                       LottieBuilder.asset(
-                        'assets/106709-hanging-plant-gently-swinging.json',
+                        'assets/104305-loding-page-nature.json',
                         height: 100,
                       ),
                       Row(
@@ -178,7 +179,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                     width: 150,
                                     height: 150,
                                     fit: BoxFit.cover,
-                                    image: AssetImage('assets/sagarp.png'),
+                                    image: AssetImage('assets/harsh.jpg'),
                                   ),
                                 ),
                               ),
@@ -197,7 +198,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                         right: 10,
                                       ),
                                       child: NeumorphicText(
-                                        'Sagar Paul',
+                                        'About Me',
                                         style: const NeumorphicStyle(
                                           color: Colors.black,
                                         ),
@@ -232,21 +233,21 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                             ),
                                           ),
                                         ),
-                                        GestureDetector(
-                                          onTap: () async {
-                                            String surl =
-                                                'https://github.com/harsh2929/AgriCeres';
-                                            Uri url = Uri.parse(surl);
-                                            await launchUrl(url,
-                                                mode: LaunchMode
-                                                    .externalApplication);
-                                          },
-                                          child: SvgPicture.asset(
-                                            'assets/github.svg',
-                                            width: 20,
-                                            height: 20,
-                                          ),
-                                        ),
+                                        // GestureDetector(
+                                        //   onTap: () async {
+                                        //     String surl =
+                                        //         'https://www.linkedin.com/in/harsh-bishnoi-50a625229/';
+                                        //     Uri url = Uri.parse(surl);
+                                        //     await launchUrl(url,
+                                        //         mode: LaunchMode
+                                        //             .externalApplication);
+                                        //   },
+                                        //   child: SvgPicture.asset(
+                                        //     'assets/github.svg',
+                                        //     width: 20,
+                                        //     height: 20,
+                                        //   ),
+                                        // ),
                                       ],
                                     )
                                   ],
@@ -273,7 +274,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                     width: 150,
                                     height: 150,
                                     fit: BoxFit.cover,
-                                    image: AssetImage('assets/paulg.jpg'),
+                                    image: AssetImage('assets/harsh.jpg'),
                                   ),
                                 ),
                               ),
@@ -293,7 +294,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                         right: 10,
                                       ),
                                       child: NeumorphicText(
-                                        'Paul G',
+                                        'App demo',
                                         style: const NeumorphicStyle(
                                           color: Colors.black,
                                         ),
@@ -322,27 +323,27 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                               right: 10,
                                             ),
                                             child: SvgPicture.asset(
-                                              'assets/linkedin.svg',
+                                              'assets/yt.svg',
                                               width: 20,
                                               height: 20,
                                             ),
                                           ),
                                         ),
-                                        GestureDetector(
-                                          onTap: () async {
-                                            String surl =
-                                                'https://github.com/harsh2929';
-                                            Uri url = Uri.parse(surl);
-                                            await launchUrl(url,
-                                                mode: LaunchMode
-                                                    .externalApplication);
-                                          },
-                                          child: SvgPicture.asset(
-                                            'assets/github.svg',
-                                            width: 20,
-                                            height: 20,
-                                          ),
-                                        ),
+                                        // GestureDetector(
+                                        //   onTap: () async {
+                                        //     String surl =
+                                        //         'https://github.com/paul1947';
+                                        //     Uri url = Uri.parse(surl);
+                                        //     await launchUrl(url,
+                                        //         mode: LaunchMode
+                                        //             .externalApplication);
+                                        //   },
+                                        //   child: SvgPicture.asset(
+                                        //     'assets/github.svg',
+                                        //     width: 20,
+                                        //     height: 20,
+                                        //   ),
+                                        // ),
                                       ],
                                     )
                                   ],
@@ -374,7 +375,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                     width: 150,
                                     height: 150,
                                     fit: BoxFit.cover,
-                                    image: AssetImage('assets/varunc.jpg'),
+                                    image: AssetImage('assets/harsh.jpg'),
                                   ),
                                 ),
                               ),
@@ -393,7 +394,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                         right: 10,
                                       ),
                                       child: NeumorphicText(
-                                        'Application Documentation', /////////////////////////////////////////////////////////
+                                        'Official docs',
                                         style: const NeumorphicStyle(
                                           color: Colors.black,
                                         ),
@@ -411,7 +412,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                         GestureDetector(
                                           onTap: () async {
                                             String surl =
-                                                'https://linkedin.com/in/varun-c-b598101a4';
+                                                'https://docs.google.com/document/d/1BoSBQ9rZ968o2GDG1QQ8IExcy9s_sQxuoIisVbOK9oc/edit?usp=sharing';
                                             Uri url = Uri.parse(surl);
                                             await launchUrl(url,
                                                 mode: LaunchMode
@@ -422,27 +423,27 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                               right: 10,
                                             ),
                                             child: SvgPicture.asset(
-                                              'assets/linkedin.svg',
+                                              'assets/gdocs.svg',
                                               width: 20,
                                               height: 20,
                                             ),
                                           ),
                                         ),
-                                        GestureDetector(
-                                          onTap: () async {
-                                            String surl =
-                                                'https://github.com/varunc20101';
-                                            Uri url = Uri.parse(surl);
-                                            await launchUrl(url,
-                                                mode: LaunchMode
-                                                    .externalApplication);
-                                          },
-                                          child: SvgPicture.asset(
-                                            'assets/github.svg',
-                                            width: 20,
-                                            height: 20,
-                                          ),
-                                        ),
+                                        // GestureDetector(
+                                        //   onTap: () async {
+                                        //     String surl =
+                                        //         'https://github.com/varunc20101';
+                                        //     Uri url = Uri.parse(surl);
+                                        //     await launchUrl(url,
+                                        //         mode: LaunchMode
+                                        //             .externalApplication);
+                                        //   },
+                                        //   child: SvgPicture.asset(
+                                        //     'assets/github.svg',
+                                        //     width: 20,
+                                        //     height: 20,
+                                        //   ),
+                                        // ),
                                       ],
                                     )
                                   ],
@@ -470,7 +471,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                     width: 150,
                                     height: 150,
                                     fit: BoxFit.cover,
-                                    image: AssetImage('assets/nihalm.jpg'),
+                                    image: AssetImage('assets/harsh.jpg'),
                                   ),
                                 ),
                               ),
@@ -490,7 +491,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                         right: 10,
                                       ),
                                       child: NeumorphicText(
-                                        'Nihal Manoj',
+                                        'Google cloud',
                                         style: const NeumorphicStyle(
                                           color: Colors.black,
                                         ),
@@ -508,7 +509,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                         GestureDetector(
                                           onTap: () async {
                                             String surl =
-                                                'https://www.linkedin.com/in/nihal-james-manoj-3b7364246';
+                                                'https://cloud.google.com/';
                                             Uri url = Uri.parse(surl);
                                             await launchUrl(url,
                                                 mode: LaunchMode
@@ -519,27 +520,27 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                               right: 10,
                                             ),
                                             child: SvgPicture.asset(
-                                              'assets/linkedin.svg',
+                                              'assets/google_cloud-icon.svg',
                                               width: 20,
                                               height: 20,
                                             ),
                                           ),
                                         ),
-                                        GestureDetector(
-                                          onTap: () async {
-                                            String surl =
-                                                'https://github.com/Blieve4ever';
-                                            Uri url = Uri.parse(surl);
-                                            await launchUrl(url,
-                                                mode: LaunchMode
-                                                    .externalApplication);
-                                          },
-                                          child: SvgPicture.asset(
-                                            'assets/github.svg',
-                                            width: 20,
-                                            height: 20,
-                                          ),
-                                        ),
+                                        // GestureDetector(
+                                        //   onTap: () async {
+                                        //     String surl =
+                                        //         'https://www.amd.com/';
+                                        //     Uri url = Uri.parse(surl);
+                                        //     await launchUrl(url,
+                                        //         mode: LaunchMode
+                                        //             .externalApplication);
+                                        //   },
+                                        //   child: SvgPicture.asset(
+                                        //     '',
+                                        //     width: 20,
+                                        //     height: 20,
+                                        //   ),
+                                        // ),
                                       ],
                                     )
                                   ],
@@ -549,48 +550,48 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                           ),
                         ],
                       ),
-                      Neumorphic(
-                        padding: const EdgeInsets.all(
-                          10,
-                        ),
-                        style: NeumorphicStyle(
-                          color: backgroundColor,
-                          intensity: 20,
-                          depth: 5,
-                        ),
-                        margin: const EdgeInsets.only(
-                          top: 20,
-                          left: 20,
-                          right: 20,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'About AgroLab',
-                              style: TextStyle(
-                                fontFamily: 'odibeeSans',
-                                fontSize: 30,
-                                color: Colors.black,
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(
-                                top: 10,
-                              ),
-                              child: const Text(
-                                'AgriCeres is an appliaction created with a motive to help farmers from the ground up, starting from produce to selling their produces and providing seamless interface with the help of Google cloud and Amd instances',
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                textAlign: TextAlign.justify,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      // Neumorphic(
+                      //   padding: const EdgeInsets.all(
+                      //     10,
+                      //   ),
+                      //   style: NeumorphicStyle(
+                      //     color: backgroundColor,
+                      //     intensity: 20,
+                      //     depth: 5,
+                      //   ),
+                      //   margin: const EdgeInsets.only(
+                      //     top: 20,
+                      //     left: 20,
+                      //     right: 20,
+                      //   ),
+                      //   child: Column(
+                      //     crossAxisAlignment: CrossAxisAlignment.start,
+                      //     children: [
+                      //       const Text(
+                      //         '',
+                      //         style: TextStyle(
+                      //           fontFamily: 'odibeeSans',
+                      //           fontSize: 30,
+                      //           color: Color.fromARGB(255, 0, 0, 0),
+                      //         ),
+                      //       ),
+                      //       Container(
+                      //         margin: const EdgeInsets.only(
+                      //           top: 10,
+                      //         ),
+                      //         child: const Text(
+                      //           '',
+                      //           style: TextStyle(
+                      //             fontSize: 10,
+                      //             color: Colors.black,
+                      //             fontWeight: FontWeight.w500,
+                      //           ),
+                      //           textAlign: TextAlign.justify,
+                      //         ),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
                       Container(
                         alignment: Alignment.topLeft,
                         margin: const EdgeInsets.only(
