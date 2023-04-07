@@ -215,7 +215,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                         GestureDetector(
                                           onTap: () async {
                                             String surl =
-                                                'https://www.linkedin.com/in/sagar-paul-6b4b9b247/';
+                                                'https://www.linkedin.com/in/harsh-bishnoi-50a625229/';
                                             Uri url = Uri.parse(surl);
                                             await launchUrl(url,
                                                 mode: LaunchMode
@@ -235,7 +235,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                         GestureDetector(
                                           onTap: () async {
                                             String surl =
-                                                'https://github.com/sagar-alias-jacky';
+                                                'https://github.com/harsh2929/AgriCeres';
                                             Uri url = Uri.parse(surl);
                                             await launchUrl(url,
                                                 mode: LaunchMode
@@ -331,7 +331,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                         GestureDetector(
                                           onTap: () async {
                                             String surl =
-                                                'https://github.com/paul1947';
+                                                'https://github.com/harsh2929';
                                             Uri url = Uri.parse(surl);
                                             await launchUrl(url,
                                                 mode: LaunchMode
@@ -393,7 +393,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                         right: 10,
                                       ),
                                       child: NeumorphicText(
-                                        'Varun C',
+                                        'Application Documentation', /////////////////////////////////////////////////////////
                                         style: const NeumorphicStyle(
                                           color: Colors.black,
                                         ),
@@ -579,7 +579,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                 top: 10,
                               ),
                               child: const Text(
-                                'AgroLab was created as part of our mini project work during the penultimate year of our CS Engineering Graduation course.\n\nAgroLab was developed with an intention to reduce the time taken to identify various plant diseases with a high detection accuracy. Early detection and counter measures will help prevent large scale losses to the farmers, also improving crop productivity.',
+                                'AgriCeres is an appliaction created with a motive to help farmers from the ground up, starting from produce to selling their produces and providing seamless interface with the help of Google cloud and Amd instances',
                                 style: TextStyle(
                                   fontSize: 10,
                                   color: Colors.black,
