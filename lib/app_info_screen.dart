@@ -16,9 +16,9 @@ class AppInfoScreen extends StatefulWidget {
 }
 
 class _AppInfoScreenState extends State<AppInfoScreen> {
-  Color backgroundColor = Color.fromARGB(255, 46, 224, 244);
-  Color secondaryColor = Color.fromARGB(255, 3, 105, 35);
-  Color accentColor = Color.fromARGB(255, 238, 245, 45);
+  Color backgroundColor = Color.fromARGB(255, 20, 244, 13);
+  Color secondaryColor = Color.fromARGB(255, 8, 96, 4);
+  Color accentColor = Color.fromARGB(255, 42, 146, 5);
 
   @override
   Widget build(BuildContext context) {
@@ -125,9 +125,9 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                 Container(
                   padding: const EdgeInsets.all(10),
                   child: SvgPicture.asset(
-                    'assets/googleamd.svg',
-                    width: 40,
-                    height: 40,
+                    'assets/infoapp.svg',
+                    width: 20,
+                    height: 20,
                   ),
                 )
               ],
@@ -274,7 +274,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                     width: 150,
                                     height: 150,
                                     fit: BoxFit.cover,
-                                    image: AssetImage('assets/harsh.jpg'),
+                                    image: AssetImage('assets/agrodemo.png'),
                                   ),
                                 ),
                               ),
@@ -311,8 +311,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                       children: [
                                         GestureDetector(
                                           onTap: () async {
-                                            String surl =
-                                                'https://linkedin.com/in/paul-g-tharayil-04a9971b1';
+                                            String surl = '';
                                             Uri url = Uri.parse(surl);
                                             await launchUrl(url,
                                                 mode: LaunchMode
@@ -375,7 +374,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                     width: 150,
                                     height: 150,
                                     fit: BoxFit.cover,
-                                    image: AssetImage('assets/harsh.jpg'),
+                                    image: AssetImage('assets/docs.jpg'),
                                   ),
                                 ),
                               ),
@@ -471,7 +470,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                     width: 150,
                                     height: 150,
                                     fit: BoxFit.cover,
-                                    image: AssetImage('assets/harsh.jpg'),
+                                    image: AssetImage('assets/solve.png'),
                                   ),
                                 ),
                               ),
@@ -491,7 +490,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                         right: 10,
                                       ),
                                       child: NeumorphicText(
-                                        'Google cloud',
+                                        'Hack. Info',
                                         style: const NeumorphicStyle(
                                           color: Colors.black,
                                         ),
@@ -592,43 +591,43 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                       //     ],
                       //   ),
                       // ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: const EdgeInsets.only(
-                          top: 20,
-                          left: 20,
-                        ),
-                        child: SvgPicture.asset(
-                          'assets/made-with-love-in-india.svg',
-                        ),
-                      ),
+                      // Container(
+                      //   alignment: Alignment.topLeft,
+                      //   margin: const EdgeInsets.only(
+                      //     top: 20,
+                      //     left: 20,
+                      //   ),
+                      //   child: SvgPicture.asset(
+                      //     'assets/made-with-love-in-india.svg',
+                      //   ),
+                      // ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
-                            alignment: Alignment.topLeft,
-                            margin: const EdgeInsets.only(
-                              top: 10,
-                              left: 20,
-                            ),
-                            child: SvgPicture.asset(
-                              'assets/flutter.svg',
-                              width: 100,
-                              height: 35,
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.topLeft,
-                            margin: const EdgeInsets.only(
-                              top: 10,
-                              left: 10,
-                            ),
-                            child: SvgPicture.asset(
-                              'assets/tensorflow.svg',
-                              width: 100,
-                              height: 35,
-                            ),
-                          ),
+                          // Container(
+                          //   alignment: Alignment.topLeft,
+                          //   margin: const EdgeInsets.only(
+                          //     top: 10,
+                          //     left: 20,
+                          //   ),
+                          //   child: SvgPicture.asset(
+                          //     'assets/flutter.svg',
+                          //     width: 100,
+                          //     height: 35,
+                          //   ),
+                          // ),
+                          // Container(
+                          //   alignment: Alignment.topLeft,
+                          //   margin: const EdgeInsets.only(
+                          //     top: 10,
+                          //     left: 10,
+                          //   ),
+                          //   child: SvgPicture.asset(
+                          //     'assets/tensorflow.svg',
+                          //     width: 100,
+                          //     height: 35,
+                          //   ),
+                          // ),
                         ],
                       )
                     ],

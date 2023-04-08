@@ -1,121 +1,80 @@
 import 'package:flutter/material.dart';
+import 'package:location/location.dart'; // Import the location package for accessing device location
 
-class Invoice {
-  String invoiceNumber;
-  String customerName;
-  double amount;
-  DateTime date;
+class InvoicePage extends StatefulWidget {
+  final double totalAmountSpent; // Total amount spent in the app
+  final List<String> errorLogs; // List of error logs
 
-  Invoice({this.invoiceNumber, this.customerName, this.amount, this.date});
-}
+  InvoicePage({required this.totalAmountSpent, required this.errorLogs});
 
-class Transaction {
-  String transactionId;
-  String beneficiaryName;
-  double amount;
-  DateTime date;
-
-  Transaction(
-      {this.transactionId, this.beneficiaryName, this.amount, this.date});
-}
-
-class AppHistory {
-  String action;
-  DateTime date;
-
-  AppHistory({this.action, this.date});
-}
-
-class InvoiceGeneratorPage extends StatefulWidget {
   @override
-  _InvoiceGeneratorPageState createState() => _InvoiceGeneratorPageState();
+  _InvoicePageState createState() => _InvoicePageState();
 }
 
-class _InvoiceGeneratorPageState extends State<InvoiceGeneratorPage> {
-  List<Invoice> invoices = [];
-  List<Transaction> transactions = [];
-  List<AppHistory> appHistory = [];
+class _InvoicePageState extends State<InvoicePage> {
+  LocationData? _locationData; // Location data
 
-  void _generateInvoice(
-      String invoiceNumber, String customerName, double amount) {
-    // Perform invoice generation logic here
-    // This could involve generating a PDF invoice, saving invoice details to a database, etc.
-    // You can customize this method based on your specific use case
-    // For demonstration purposes, we'll just create a new Invoice object and add it to the invoices list
-    setState(() {
-      invoices.add(Invoice(
-        invoiceNumber: invoiceNumber,
-        customerName: customerName,
-        amount: amount,
-        date: DateTime.now(),
-      ));
-    });
-
-    // Add app history
-    setState(() {
-      appHistory.add(AppHistory(
-        action: 'Invoice generated',
-        date: DateTime.now(),
-      ));
-    });
+  @override
+  void initState() {
+    super.initState();
+    _getLocation(); // Get the current location of the device
   }
 
-  void _performTransaction(
-      String transactionId, String beneficiaryName, double amount) {
-    // Perform transaction logic here
-    // This could involve calling a payment gateway API, updating account balances, etc.
-    // You can customize this method based on your specific use case
-    // For demonstration purposes, we'll just create a new Transaction object and add it to the transactions list
-    setState(() {
-      transactions.add(Transaction(
-        transactionId: transactionId,
-        beneficiaryName: beneficiaryName,
-        amount: amount,
-        date: DateTime.now(),
-      ));
-    });
+  Future<void> _getLocation() async {
+    Location location = Location();
+    bool _serviceEnabled;
+    PermissionStatus _permissionGranted;
 
-    // Add app history
-    setState(() {
-      appHistory.add(AppHistory(
-        action: 'Transaction performed',
-        date: DateTime.now(),
-      ));
-    });
+    // Check if location service is enabled
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        return;
+      }
+    }
+
+    // Check if location permission is granted
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+
+    // Get the current location
+    _locationData = await location.getLocation();
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Invoice Generator'),
+        title: Text('Invoice'),
       ),
-      body: Column(
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              _generateInvoice('INV001', 'John Doe', 1000.00);
-            },
-            child: Text('Generate Invoice'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              _performTransaction('TXN001', 'Jane Smith', 500.00);
-            },
-            child: Text('Perform Transaction'),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: appHistory.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(appHistory[index].action),
-                  subtitle: Text(appHistory[index].date.toString()),
-                );
-              },
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'Total Amount Spent: \$${widget.totalAmountSpent.toStringAsFixed(2)}', // Display total amount spent
+              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
-          ),
-        ],
+            SizedBox(height: 16.0),
+            Text(
+              'Current Location: ${_locationData != null ? 'Latitude: ${_locationData!.latitude}, Longitude: ${_locationData!.longitude}' : 'Unknown'}', // Display current location
+              style: TextStyle(fontSize: 18.0),
+            ),
+            SizedBox(height: 16.0),
+            Text(
+              'Error Logs: ${widget.errorLogs.isNotEmpty ? widget.errorLogs.join(', ') : 'None'}', // Display error logs
+              style: TextStyle(fontSize: 18.0),
+            ),
+          ],
+        ),
       ),
     );
   }

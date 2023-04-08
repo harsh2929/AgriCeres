@@ -258,6 +258,48 @@ class _EncyclopediaState extends State<Encyclopedia> {
                           ),
                           GestureDetector(
                             onTap: () async {
+                              String urls = "https://agmarknet.gov.in/"
+                                  '';
+                              Uri url = Uri.parse(urls);
+                              await launchUrl(url,
+                                  mode: LaunchMode.inAppWebView);
+                            },
+                            child: Container(
+                              height: 130,
+                              decoration: BoxDecoration(
+                                image: const DecorationImage(
+                                  image: AssetImage('assets/msp.jpg'),
+                                  fit: BoxFit.cover,
+                                ),
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              margin: const EdgeInsets.fromLTRB(
+                                10,
+                                0,
+                                10,
+                                10,
+                              ),
+                              child: Align(
+                                alignment: Alignment.topLeft,
+                                child: Container(
+                                  margin: const EdgeInsets.only(
+                                    top: 10,
+                                    left: 20,
+                                  ),
+                                  child: Text(
+                                    '',
+                                    style: TextStyle(
+                                      color: backgroundColor,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () async {
                               String urls = "https://pmkisan.gov.in/"
                                   '';
                               Uri url = Uri.parse(urls);
@@ -300,8 +342,9 @@ class _EncyclopediaState extends State<Encyclopedia> {
                           ),
                           GestureDetector(
                             onTap: () async {
-                              String urls = "https://www.google.com/search?q="
-                                  'Cherry+plant+diseases+and+preventive+care+measures';
+                              String urls =
+                                  "https://soilhealth.dac.gov.in/home/"
+                                  '';
                               Uri url = Uri.parse(urls);
                               await launchUrl(url,
                                   mode: LaunchMode.inAppWebView);
@@ -310,7 +353,7 @@ class _EncyclopediaState extends State<Encyclopedia> {
                               height: 130,
                               decoration: BoxDecoration(
                                 image: const DecorationImage(
-                                  image: AssetImage('assets/echerry.jpg'),
+                                  image: AssetImage('assets/soilhealth.png'),
                                   fit: BoxFit.cover,
                                 ),
                                 borderRadius: BorderRadius.circular(15),
@@ -329,7 +372,7 @@ class _EncyclopediaState extends State<Encyclopedia> {
                                     left: 20,
                                   ),
                                   child: Text(
-                                    'Cherry',
+                                    '',
                                     style: TextStyle(
                                       color: backgroundColor,
                                       fontSize: 15,
@@ -342,8 +385,8 @@ class _EncyclopediaState extends State<Encyclopedia> {
                           ),
                           GestureDetector(
                             onTap: () async {
-                              String urls = "https://www.google.com/search?q="
-                                  'Corn+plant+diseases+and+preventive+care+measures';
+                              String urls = "https://farmer.gov.in/"
+                                  '';
                               Uri url = Uri.parse(urls);
                               await launchUrl(url,
                                   mode: LaunchMode.inAppWebView);
@@ -352,7 +395,7 @@ class _EncyclopediaState extends State<Encyclopedia> {
                               height: 130,
                               decoration: BoxDecoration(
                                 image: const DecorationImage(
-                                  image: AssetImage('assets/ecorn.jpg'),
+                                  image: AssetImage('assets/farmerportal.png'),
                                   fit: BoxFit.cover,
                                 ),
                                 borderRadius: BorderRadius.circular(15),
@@ -371,7 +414,7 @@ class _EncyclopediaState extends State<Encyclopedia> {
                                     left: 20,
                                   ),
                                   child: Text(
-                                    'Corn',
+                                    '',
                                     style: TextStyle(
                                       color: backgroundColor,
                                       fontSize: 15,
@@ -384,8 +427,8 @@ class _EncyclopediaState extends State<Encyclopedia> {
                           ),
                           GestureDetector(
                             onTap: () async {
-                              String urls = "https://www.google.com/search?q="
-                                  'Grape+plant+diseases+and+preventive+care+measures';
+                              String urls = "https://icar.org.in/"
+                                  '';
                               Uri url = Uri.parse(urls);
                               await launchUrl(url,
                                   mode: LaunchMode.inAppWebView);
@@ -394,7 +437,7 @@ class _EncyclopediaState extends State<Encyclopedia> {
                               height: 130,
                               decoration: BoxDecoration(
                                 image: const DecorationImage(
-                                  image: AssetImage('assets/egrapes.jpg'),
+                                  image: AssetImage('assets/icar.png'),
                                   fit: BoxFit.cover,
                                 ),
                                 borderRadius: BorderRadius.circular(15),
@@ -413,7 +456,7 @@ class _EncyclopediaState extends State<Encyclopedia> {
                                     left: 20,
                                   ),
                                   child: Text(
-                                    'Grape',
+                                    '',
                                     style: TextStyle(
                                       color: backgroundColor,
                                       fontSize: 15,
@@ -426,8 +469,8 @@ class _EncyclopediaState extends State<Encyclopedia> {
                           ),
                           GestureDetector(
                             onTap: () async {
-                              String urls = "https://www.google.com/search?q="
-                                  'Peach+plant+diseases+and+preventive+care+measures';
+                              String urls = "https://agricoop.nic.in/"
+                                  '';
                               Uri url = Uri.parse(urls);
                               await launchUrl(url,
                                   mode: LaunchMode.inAppWebView);
@@ -436,7 +479,7 @@ class _EncyclopediaState extends State<Encyclopedia> {
                               height: 130,
                               decoration: BoxDecoration(
                                 image: const DecorationImage(
-                                  image: AssetImage('assets/epeach.jpg'),
+                                  image: AssetImage('assets/agricoop.png'),
                                   fit: BoxFit.cover,
                                 ),
                                 borderRadius: BorderRadius.circular(15),
@@ -468,8 +511,9 @@ class _EncyclopediaState extends State<Encyclopedia> {
                           ),
                           GestureDetector(
                             onTap: () async {
-                              String urls = "https://www.google.com/search?q="
-                                  'Potato+plant+diseases+and+preventive+care+measures';
+                              String urls =
+                                  "https://dackkms.gov.in/Account/Login.aspx"
+                                  '';
                               Uri url = Uri.parse(urls);
                               await launchUrl(url,
                                   mode: LaunchMode.inAppWebView);
@@ -478,7 +522,7 @@ class _EncyclopediaState extends State<Encyclopedia> {
                               height: 130,
                               decoration: BoxDecoration(
                                 image: const DecorationImage(
-                                  image: AssetImage('assets/epotato.jpg'),
+                                  image: AssetImage('assets/kkm.png'),
                                   fit: BoxFit.cover,
                                 ),
                                 borderRadius: BorderRadius.circular(15),
@@ -508,90 +552,90 @@ class _EncyclopediaState extends State<Encyclopedia> {
                               ),
                             ),
                           ),
-                          GestureDetector(
-                            onTap: () async {
-                              String urls = "https://www.google.com/search?q="
-                                  'Rice+plant+diseases+and+preventive+care+measures';
-                              Uri url = Uri.parse(urls);
-                              await launchUrl(url,
-                                  mode: LaunchMode.inAppWebView);
-                            },
-                            child: Container(
-                              height: 130,
-                              decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  image: AssetImage('assets/erice.jpg'),
-                                  fit: BoxFit.cover,
-                                ),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              margin: const EdgeInsets.fromLTRB(
-                                10,
-                                0,
-                                10,
-                                10,
-                              ),
-                              child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Container(
-                                  margin: const EdgeInsets.only(
-                                    top: 10,
-                                    left: 20,
-                                  ),
-                                  child: Text(
-                                    'Rice',
-                                    style: TextStyle(
-                                      color: backgroundColor,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () async {
-                              String urls = "https://www.google.com/search?q="
-                                  'Tomato+plant+diseases+and+preventive+care+measures';
-                              Uri url = Uri.parse(urls);
-                              await launchUrl(url,
-                                  mode: LaunchMode.inAppWebView);
-                            },
-                            child: Container(
-                              height: 130,
-                              decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  image: AssetImage('assets/etomato.jpg'),
-                                  fit: BoxFit.cover,
-                                ),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              margin: const EdgeInsets.fromLTRB(
-                                10,
-                                0,
-                                10,
-                                20,
-                              ),
-                              child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Container(
-                                  margin: const EdgeInsets.only(
-                                    top: 10,
-                                    left: 20,
-                                  ),
-                                  child: Text(
-                                    'Tomato',
-                                    style: TextStyle(
-                                      color: backgroundColor,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+                          // GestureDetector(
+                          //   onTap: () async {
+                          //     String urls = "https://enam.gov.in/web/"
+                          //         '';
+                          //     Uri url = Uri.parse(urls);
+                          //     await launchUrl(url,
+                          //         mode: LaunchMode.inAppWebView);
+                          //   },
+                          //   child: Container(
+                          //     height: 130,
+                          //     decoration: BoxDecoration(
+                          //       image: const DecorationImage(
+                          //         image: AssetImage('assets/enam.jpg'),
+                          //         fit: BoxFit.cover,
+                          //       ),
+                          //       borderRadius: BorderRadius.circular(15),
+                          //     ),
+                          //     margin: const EdgeInsets.fromLTRB(
+                          //       10,
+                          //       0,
+                          //       10,
+                          //       10,
+                          //     ),
+                          //     child: Align(
+                          //       alignment: Alignment.topLeft,
+                          //       child: Container(
+                          //         margin: const EdgeInsets.only(
+                          //           top: 10,
+                          //           left: 20,
+                          //         ),
+                          //         child: Text(
+                          //           '',
+                          //           style: TextStyle(
+                          //             color: backgroundColor,
+                          //             fontSize: 15,
+                          //             fontWeight: FontWeight.w500,
+                          //           ),
+                          //         ),
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
+                          // GestureDetector(
+                          //   onTap: () async {
+                          //     String urls = "http://rkvy.nic.in/"
+                          //         '';
+                          //     Uri url = Uri.parse(urls);
+                          //     await launchUrl(url,
+                          //         mode: LaunchMode.inAppWebView);
+                          //   },
+                          //   child: Container(
+                          //     height: 130,
+                          //     decoration: BoxDecoration(
+                          //       image: const DecorationImage(
+                          //         image: AssetImage('assets/kvy.png'),
+                          //         fit: BoxFit.cover,
+                          //       ),
+                          //       borderRadius: BorderRadius.circular(15),
+                          //     ),
+                          //     margin: const EdgeInsets.fromLTRB(
+                          //       10,
+                          //       0,
+                          //       10,
+                          //       20,
+                          //     ),
+                          //     child: Align(
+                          //       alignment: Alignment.topLeft,
+                          //       child: Container(
+                          //         margin: const EdgeInsets.only(
+                          //           top: 10,
+                          //           left: 20,
+                          //         ),
+                          //         child: Text(
+                          //           '',
+                          //           style: TextStyle(
+                          //             color: backgroundColor,
+                          //             fontSize: 15,
+                          //             fontWeight: FontWeight.w500,
+                          //           ),
+                          //         ),
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),

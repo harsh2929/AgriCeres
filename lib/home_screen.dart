@@ -10,6 +10,7 @@ import 'app_info_screen.dart';
 import 'encyclopedia_screen.dart';
 import 'farmcalc.dart';
 import 'callhelp.dart';
+import 'ainews.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -130,15 +131,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   padding: const EdgeInsets.all(10),
                   child: SvgPicture.asset(
-                    'assets/tensorflow-icontext.svg',
-                    width: 40,
-                    height: 40,
+                    'assets/home-icon-silhouette-svgrepo-com.svg',
+                    width: 30,
+                    height: 30,
                   ),
                 )
               ],
             ),
             LottieBuilder.asset(
-              'assets/45869-farmers.json',
+              'assets/9624-watering-and-growing-plants.json',
               width: 200,
               height: 200,
             ),
@@ -150,12 +151,13 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisSpacing: 20,
               children: [
                 GestureDetector(
+                  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            const LeafScan(modelName: 'Apple'),
+                            AgricultureHelplinePage(), // Replace with the login page widget
                       ),
                     );
                   },
@@ -165,9 +167,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SvgPicture.asset(
-                          'assets/banking.svg',
-                          width: 50,
-                          height: 50,
+                          'assets/banklogo.svg',
+                          width: 75,
+                          height: 75,
                         ),
                         Container(
                           margin: const EdgeInsets.only(top: 10),
@@ -184,12 +186,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 GestureDetector(
+                  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            const LeafScan(modelName: 'BellPepper'),
+                            AgricultureHelplinePage(), // Replace with the login page widget
                       ),
                     );
                   },
@@ -199,14 +202,119 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SvgPicture.asset(
-                          'assets/bell-pepper-svgrepo-com.svg',
-                          width: 50,
-                          height: 50,
+                          'assets/textdetect.svg',
+                          width: 75,
+                          height: 75,
                         ),
                         Container(
                           margin: const EdgeInsets.only(top: 10),
                           child: const Text(
-                            'Bell Pepper',
+                            'text detection',
+                            style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            AgricultureHelplinePage(), // Replace with the login page widget
+                      ),
+                    );
+                  },
+                  child: Neumorphic(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/plantdisease.svg',
+                          width: 75,
+                          height: 75,
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 10),
+                          child: const Text(
+                            'Plant Disease',
+                            style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            AgricultureHelplinePage(), // Replace with the login page widget
+                      ),
+                    );
+                  },
+                  child: Neumorphic(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/marketlogo.svg',
+                          width: 75,
+                          height: 75,
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 10),
+                          child: const Text(
+                            'Market ',
+                            style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            AgricultureHelplinePage(), // Replace with the login page widget
+                      ),
+                    );
+                  },
+                  child: Neumorphic(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/invoicegen.svg',
+                          width: 75,
+                          height: 75,
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 10),
+                          child: const Text(
+                            'Invoice Generator',
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w500,
@@ -223,7 +331,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            const LeafScan(modelName: 'Cherry'),
+                            AgricultureNewsPage(), ///////////////////////////////////////////////////////////////////////////////////////////// Repla     ce with the login page widget
                       ),
                     );
                   },
@@ -233,115 +341,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SvgPicture.asset(
-                          'assets/txtdetect.svg',
-                          width: 50,
-                          height: 50,
+                          'assets/newsicon.svg',
+                          width: 75,
+                          height: 75,
                         ),
                         Container(
                           margin: const EdgeInsets.only(top: 10),
                           child: const Text(
-                            'Cherry',
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const LeafScan(modelName: 'Corn'),
-                      ),
-                    );
-                  },
-                  child: Neumorphic(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(
-                          'assets/corn-svgrepo-com.svg',
-                          width: 50,
-                          height: 50,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 10),
-                          child: const Text(
-                            'Corn',
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            const LeafScan(modelName: 'Grape'),
-                      ),
-                    );
-                  },
-                  child: Neumorphic(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(
-                          'assets/grapes-grape-svgrepo-com.svg',
-                          width: 50,
-                          height: 50,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 10),
-                          child: const Text(
-                            'Grape',
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            const LeafScan(modelName: 'Peach'),
-                      ),
-                    );
-                  },
-                  child: Neumorphic(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(
-                          'assets/peach-svgrepo-com.svg',
-                          width: 50,
-                          height: 50,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 10),
-                          child: const Text(
-                            'Peach',
+                            'News',
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w500,
@@ -368,14 +375,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SvgPicture.asset(
-                          'assets/potato-svgrepo-com.svg',
-                          width: 50,
-                          height: 50,
+                          'assets/getcall.svg',
+                          width: 75,
+                          height: 75,
                         ),
                         Container(
                           margin: const EdgeInsets.only(top: 10),
                           child: const Text(
-                            'Potato',
+                            'Get Help',
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w500,
@@ -402,14 +409,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SvgPicture.asset(
-                          'assets/potato-svgrepo-com.svg',
-                          width: 50,
-                          height: 50,
+                          'assets/soilhealthlogo.svg',
+                          width: 75,
+                          height: 75,
                         ),
                         Container(
                           margin: const EdgeInsets.only(top: 10),
                           child: const Text(
-                            'Potato',
+                            'Soil Health',
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w500,
@@ -436,14 +443,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SvgPicture.asset(
-                          'assets/potato-svgrepo-com.svg',
-                          width: 50,
-                          height: 50,
+                          'assets/storagelogo.svg',
+                          width: 75,
+                          height: 75,
                         ),
                         Container(
                           margin: const EdgeInsets.only(top: 10),
                           child: const Text(
-                            'Get Help',
+                            'Calculator',
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w500,

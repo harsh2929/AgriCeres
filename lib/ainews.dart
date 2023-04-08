@@ -1,121 +1,82 @@
-import 'dart:io';
-import 'dart:math';
-import 'package:googleapis/natural_language_v1.dart';
-import 'package:googleapis_auth/auth_io.dart';
+//integrating firestore into the app
+// Path: lib\ainews.dart
 
-class News {
-  final String title;
-  final String category;
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:google_fonts/google_fonts.dart';
 
-  News({this.title, this.category});
+class AgricultureNewsPage extends StatefulWidget {
+  @override
+  _AgricultureNewsPageState createState() => _AgricultureNewsPageState();
 }
 
-class AppUsage {
-  final String appName;
-  final int usageCount;
+class _AgricultureNewsPageState extends State<AgricultureNewsPage> {
+  List<dynamic> _newsList = [];
+  bool _loading = true;
 
-  AppUsage({this.appName, this.usageCount});
-}
+  Future<void> _fetchNews() async {
+    setState(() {
+      _loading = true;
+    });
 
-class NewsSuggestion {
-  static List<News> allNews = [
-    News(title: "Breaking News 1", category: "Politics"),
-    News(title: "Breaking News 2", category: "Business"),
-    News(title: "Breaking News 3", category: "Technology"),
-    News(title: "Breaking News 4", category: "Sports"),
-    News(title: "Breaking News 5", category: "Entertainment"),
-  ];
+    // Replace the API_KEY with your actual API key
+    String apiKey = '545e5e9a0e084454b7cfebf00aa61581';
+    String apiUrl =
+        'https://newsapi.org/v2/top-headlines?country=us&category=agriculture&apiKey=$apiKey';
 
-  static List<AppUsage> appUsages = [
-    AppUsage(appName: "NewsApp", usageCount: 25),
-    AppUsage(appName: "SocialMediaApp", usageCount: 15),
-    AppUsage(appName: "WeatherApp", usageCount: 10),
-    AppUsage(appName: "MusicApp", usageCount: 5),
-  ];
+    try {
+      final response = await http.get(Uri.parse(apiUrl));
 
-  static Future<List<News>> getNewsSuggestions(int limit) async {
-    List<News> suggestions = [];
-
-    // Sort app usages by usage count in descending order
-    appUsages.sort((a, b) => b.usageCount.compareTo(a.usageCount));
-
-    // Get the most used app
-    AppUsage mostUsedApp = appUsages.isNotEmpty ? appUsages.first : null;
-
-    if (mostUsedApp != null) {
-      // Get news suggestions based on most used app category
-      String mostUsedAppCategory = await getCategoryForApp(mostUsedApp.appName);
-      suggestions = allNews
-          .where((news) => news.category == mostUsedAppCategory)
-          .toList();
-    }
-
-    // If no suggestions found based on most used app category,
-    // randomly select some news from all available news
-    if (suggestions.isEmpty) {
-      suggestions = getRandomNews();
-    }
-
-    // Limit the number of news suggestions
-    suggestions = suggestions.take(limit).toList();
-
-    return suggestions;
-  }
-
-  static Future<String> getCategoryForApp(String appName) async {
-    // Authenticate with Google Cloud Natural Language API
-    final credentials = await obtainAccessCredentialsViaServiceAccount(
-        ServiceAccountCredentials.fromJson({
-          "private_key": "<PRIVATE_KEY>",
-          "client_email": "<CLIENT_EMAIL>",
-          "project_id": "<PROJECT_ID>"
-        }),
-        null,
-        [NaturalLanguageApi.CloudPlatformScope]);
-
-    final naturalLanguage = NaturalLanguageApi(credentials);
-    final analyzeEntitiesRequest = AnalyzeEntitiesRequest()
-      ..document = Document()
-      ..document.type = "PLAIN_TEXT"
-      ..document.content = appName;
-    final result =
-        await naturalLanguage.documents.analyzeEntities(analyzeEntitiesRequest);
-
-    // Extract category from the API response
-    if (result.entities.isNotEmpty) {
-      for (var entity in result.entities) {
-        if (entity.type == "CATEGORY") {
-          return entity.name;
-        }
+      if (response.statusCode == 200) {
+        Map<String, dynamic> jsonData = jsonDecode(response.body);
+        setState(() {
+          _newsList = jsonData['articles'];
+          _loading = false;
+        });
+      } else {
+        throw Exception('Failed to fetch news');
       }
+    } catch (e) {
+      print('Error: $e');
+      setState(() {
+        _loading = false;
+      });
     }
-
-    return "Other";
   }
 
-  static List<News> getRandomNews() {
-    List<News> suggestions = [];
-    Random random = Random();
-
-    // Generate 3 random news suggestions from all available news
-    while (suggestions.length < 3) {
-      int index = random.nextInt(allNews.length);
-      if (!suggestions.contains(allNews[index])) {
-        suggestions.add(allNews[index]);
-      }
-    }
-
-    return suggestions;
+  @override
+  void initState() {
+    super.initState();
+    _fetchNews();
   }
-}
 
-void main() async {
-  // Call the getNewsSuggestions method to get news suggestions
-  List<News> newsSuggestions = await NewsSuggestion.getNewsSuggestions(5);
-
-  // Print the news suggestions
-  print("News Suggestions:");
-  for (var news in newsSuggestions) {
-    print("Title: ${news.title}, Category: ${news.category}");
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Agro News'),
+        backgroundColor: Colors.green,
+      ),
+      body: _loading
+          ? Center(child: CircularProgressIndicator())
+          : _newsList.isNotEmpty
+              ? ListView.builder(
+                  itemCount: _newsList.length,
+                  itemBuilder: (context, index) {
+                    final article = _newsList[index];
+                    return ListTile(
+                      title: Text(article['title']),
+                      subtitle: Text(article['description']),
+                      onTap: () {
+                        // Open the news article in a web view or any other action
+                        // that you want to perform when a news article is tapped
+                        // e.g. Navigator.push() to a detailed article view
+                      },
+                    );
+                  },
+                )
+              : Center(child: Text('No news articles found.')),
+    );
   }
 }
