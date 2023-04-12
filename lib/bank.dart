@@ -5,6 +5,7 @@ class BankingServicesPage extends StatefulWidget {
   @override
   _BankingServicesPageState createState() => _BankingServicesPageState();
 }
+//SBI internet check logic to be added
 
 class _BankingServicesPageState extends State<BankingServicesPage> {
   List<UpiApp>? apps;
