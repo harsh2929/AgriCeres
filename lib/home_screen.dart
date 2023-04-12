@@ -331,7 +331,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            AgricultureNewsPage(), ///////////////////////////////////////////////////////////////////////////////////////////// Repla     ce with the login page widget
+                            AgricultureNewsPage(), //////////////////////////////////////////////////////////////////////////// Replace with the login page widget
                       ),
                     );
                   },
