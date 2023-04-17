@@ -44,6 +44,7 @@ class _EncyclopediaState extends State<Encyclopedia> {
               ),
             );
           }
+          
           if (index == 2) {
             Navigator.push(
               context,

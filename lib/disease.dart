@@ -1,63 +1,70 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:tflite/tflite.dart';
 
-class CropDiseaseDetectionPage extends StatefulWidget {
+class ImagePredictionPage extends StatefulWidget {
   @override
-  _CropDiseaseDetectionPageState createState() =>
-      _CropDiseaseDetectionPageState();
+  _ImagePredictionPageState createState() => _ImagePredictionPageState();
 }
 
-class _CropDiseaseDetectionPageState extends State<CropDiseaseDetectionPage> {
-  String detectedDisease = '';
-  String remedialMeasures = '';
+class _ImagePredictionPageState extends State<ImagePredictionPage> {
+  late File _imageFile;
+  String _predictionResult = '';
+  bool _isLoading = false;
 
-  Future<void> detectCropDisease() async {
-    // Code to call Google Cloud Vision API for crop disease detection
-    // Update detectedDisease and remedialMeasures variables with the API response
+  Future<void> pickImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        _imageFile = File(pickedFile.path);
+        _predictionResult = '';
+      });
+      runModelOnImage();
+    }
+  }
+
+  Future<void> runModelOnImage() async {
     setState(() {
-      detectedDisease =
-          'Tomato Late Blight'; // Replace with actual detected disease
-      remedialMeasures =
-          'Use fungicides, remove infected plants'; // Replace with actual remedial measures
+      _isLoading = true;
     });
+    await Tflite.loadModel(
+      model: 'assets/model.tflite',
+      labels: 'assets/labels.txt',
+    );
+    var output = await Tflite.runModelOnImage(
+      path: _imageFile.path,
+    );
+    setState(() {
+      _isLoading = false;
+      _predictionResult = output != null
+          ? output.map((output) => '${output['label']}: ${output['confidence'].toStringAsFixed(2)}').join('\n')
+          : 'Failed to run model';
+    });
+    await Tflite.close();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Crop Disease Detection'),
+        title: Text('Image Prediction'),
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ElevatedButton(
-              onPressed: detectCropDisease,
-              child: Text('Detect Crop Disease'),
-            ),
-            SizedBox(height: 16.0),
-            Text(
-              'Detected Disease:',
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 8.0),
-            Text(detectedDisease, style: TextStyle(fontSize: 16.0)),
-            SizedBox(height: 16.0),
-            Text(
-              'Remedial Measures:',
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 8.0),
-            Text(remedialMeasures, style: TextStyle(fontSize: 16.0)),
-          ],
-        ),
+      body: Column(
+        children: <Widget>[
+          _isLoading
+              ? CircularProgressIndicator()
+              : SizedBox(height: 20),
+          _predictionResult.isNotEmpty
+              ? Text('Predictions:\n$_predictionResult')
+              : Container(),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: pickImage,
+            child: Text('Click Photo / Upload Image'),
+          ),
+        ],
       ),
     );
   }

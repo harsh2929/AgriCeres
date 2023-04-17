@@ -1,96 +1,184 @@
 import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:google_ml_kit/google_ml_kit.dart';
 
-class ImageTextScanPage extends StatefulWidget {
+import 'package:flutter/material.dart';
+import 'package:google_ml_kit/google_ml_kit.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
+
+class TextDect extends StatelessWidget {
+  const TextDect({Key? key}) : super(key: key);
+
+  // This widget is the root of your application.
   @override
-  _ImageTextScanPageState createState() => _ImageTextScanPageState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      home: const MyHomePage(),
+    );
+  }
 }
 
-class _ImageTextScanPageState extends State<ImageTextScanPage> {
-  File? _pickedImage;
-  String _detectedText = '';
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
 
-  Future<void> _pickImage(ImageSource source) async {
-    final pickedImageFile = await ImagePicker().getImage(source: source);
-    if (pickedImageFile != null) {
-      setState(() {
-        _pickedImage = File(pickedImageFile.path);
-        _detectedText = '';
-      });
-    }
-  }
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
 
-  Future<void> _scanImageText() async {
-    if (_pickedImage != null) {
-      final inputImage = InputImage.fromFile(_pickedImage!);
-      final textDetector = GoogleMlKit.vision.textDetector();
-      final RecognisedText recognisedText =
-          await textDetector.processImage(inputImage);
-      String detectedText = recognisedText.text;
-      setState(() {
-        _detectedText = detectedText;
-      });
-    }
-  }
+class _MyHomePageState extends State<MyHomePage> {
+  bool textScanning = false;
 
-  Future<void> _translateTextToHindi(String text) async {
-    final languageTranslator = GoogleMlKit.languageTranslator();
-    final translatedText =
-        await languageTranslator.translate(text, from: 'en', to: 'hi');
-    setState(() {
-      _detectedText = translatedText;
-    });
-  }
+  XFile? imageFile;
+
+  String scannedText = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Image Text Scanner'),
+        centerTitle: true,
+        title: const Text("Text Recognition"),
       ),
-      body: Column(
-        children: [
-          SizedBox(height: 16.0),
-          ElevatedButton(
-            onPressed: () => _pickImage(ImageSource.camera),
-            child: Text('Pick Image from Camera'),
-          ),
-          SizedBox(height: 16.0),
-          ElevatedButton(
-            onPressed: () => _pickImage(ImageSource.gallery),
-            child: Text('Pick Image from Gallery'),
-          ),
-          SizedBox(height: 16.0),
-          _pickedImage != null
-              ? Image.file(_pickedImage!)
-              : Text('No image selected.'),
-          SizedBox(height: 16.0),
-          ElevatedButton(
-            onPressed: _scanImageText,
-            child: Text('Scan Image for Text'),
-          ),
-          SizedBox(height: 16.0),
-          _detectedText.isNotEmpty
-              ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+      body: Center(
+          child: SingleChildScrollView(
+        child: Container(
+            margin: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (textScanning) const CircularProgressIndicator(),
+                if (!textScanning && imageFile == null)
+                  Container(
+                    width: 300,
+                    height: 300,
+                    color: Colors.grey[300]!,
+                  ),
+                if (imageFile != null) Image.file(File(imageFile!.path)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'Detected Text:',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Text(_detectedText),
-                    SizedBox(height: 16.0),
-                    ElevatedButton(
-                      onPressed: () => _translateTextToHindi(_detectedText),
-                      child: Text('Translate to Hindi'),
-                    ),
+                    Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 5),
+                        padding: const EdgeInsets.only(top: 10),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.white,
+                            onPrimary: Colors.grey,
+                            shadowColor: Colors.grey[400],
+                            elevation: 10,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0)),
+                          ),
+                          onPressed: () {
+                            getImage(ImageSource.gallery);
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 5),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.image,
+                                  size: 30,
+                                ),
+                                Text(
+                                  "Gallery",
+                                  style: TextStyle(
+                                      fontSize: 13, color: Colors.grey[600]),
+                                )
+                              ],
+                            ),
+                          ),
+                        )),
+                    Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 5),
+                        padding: const EdgeInsets.only(top: 10),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.white,
+                            onPrimary: Colors.grey,
+                            shadowColor: Colors.grey[400],
+                            elevation: 10,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0)),
+                          ),
+                          onPressed: () {
+                            getImage(ImageSource.camera);
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 5),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.camera_alt,
+                                  size: 30,
+                                ),
+                                Text(
+                                  "Camera",
+                                  style: TextStyle(
+                                      fontSize: 13, color: Colors.grey[600]),
+                                )
+                              ],
+                            ),
+                          ),
+                        )),
                   ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  child: Text(
+                    scannedText,
+                    style: TextStyle(fontSize: 20),
+                  ),
                 )
-              : Text('No text detected.'),
-        ],
-      ),
+              ],
+            )),
+      )),
     );
+  }
+
+  void getImage(ImageSource source) async {
+    try {
+      final pickedImage = await ImagePicker().pickImage(source: source);
+      if (pickedImage != null) {
+        textScanning = true;
+        imageFile = pickedImage;
+        setState(() {});
+        getRecognisedText(pickedImage);
+      }
+    } catch (e) {
+      textScanning = false;
+      imageFile = null;
+      scannedText = "Error occured while scanning";
+      setState(() {});
+    }
+  }
+
+  void getRecognisedText(XFile image) async {
+    final inputImage = InputImage.fromFilePath(image.path);
+    final textDetector = GoogleMlKit.vision.textRecognizer();
+    final recognisedText = await textDetector.processImage(inputImage);
+    await textDetector.close();
+    scannedText = "";
+    for (TextBlock block in recognisedText.blocks) {
+      for (TextLine line in block.lines) {
+        scannedText = scannedText + line.text + "\n";
+      }
+    }
+    textScanning = false;
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 }

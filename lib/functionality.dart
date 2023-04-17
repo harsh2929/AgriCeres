@@ -113,7 +113,7 @@ class _FunctionalityState extends State<Functionality> {
                       Container(
                         padding: const EdgeInsets.all(10),
                         child: const Text(
-                          "AgroLab",
+                          "AgroCeres",
                           style: TextStyle(
                             fontFamily: 'odibeeSans',
                             fontSize: 25,
@@ -568,7 +568,7 @@ class _FunctionalityState extends State<Functionality> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              'About AgroLab',
+                              'About AgroCeres',
                               style: TextStyle(
                                 fontFamily: 'odibeeSans',
                                 fontSize: 30,
@@ -580,7 +580,7 @@ class _FunctionalityState extends State<Functionality> {
                                 top: 10,
                               ),
                               child: const Text(
-                                'AgroLab was created as part of our mini project work during the penultimate year of our CS Engineering Graduation course.\n\nAgroLab was developed with an intention to reduce the time taken to identify various plant diseases with a high detection accuracy. Early detection and counter measures will help prevent large scale losses to the farmers, also improving crop productivity.',
+                                'AgroCeres was created as part of our mini project work during the penultimate year of our CS Engineering Graduation course.\n\nAgroCeres was developed with an intention to reduce the time taken to identify various plant diseases with a high detection accuracy. Early detection and counter measures will help prevent large scale losses to the farmers, also improving crop productivity.',
                                 style: TextStyle(
                                   fontSize: 10,
                                   color: Colors.black,

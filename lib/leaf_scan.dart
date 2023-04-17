@@ -6,8 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:AgroLab/encyclopedia_screen.dart';
-import 'package:AgroLab/home_screen.dart';
+import 'package:AgroCeres/encyclopedia_screen.dart';
+import 'package:AgroCeres/home_screen.dart';
 import 'package:tflite/tflite.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'functionality.dart';
@@ -260,7 +260,7 @@ class _LeafScanState extends State<LeafScan> {
                       Container(
                         padding: EdgeInsets.all(10),
                         child: Text(
-                          "AgroLab",
+                          "AgroCeres",
                           style: TextStyle(
                             fontFamily: 'odibeeSans',
                             fontSize: 25,

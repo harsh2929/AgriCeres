@@ -233,21 +233,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                             ),
                                           ),
                                         ),
-                                        // GestureDetector(
-                                        //   onTap: () async {
-                                        //     String surl =
-                                        //         'https://www.linkedin.com/in/harsh-bishnoi-50a625229/';
-                                        //     Uri url = Uri.parse(surl);
-                                        //     await launchUrl(url,
-                                        //         mode: LaunchMode
-                                        //             .externalApplication);
-                                        //   },
-                                        //   child: SvgPicture.asset(
-                                        //     'assets/github.svg',
-                                        //     width: 20,
-                                        //     height: 20,
-                                        //   ),
-                                        // ),
+
                                       ],
                                     )
                                   ],
@@ -328,21 +314,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                             ),
                                           ),
                                         ),
-                                        // GestureDetector(
-                                        //   onTap: () async {
-                                        //     String surl =
-                                        //         'https://github.com/paul1947';
-                                        //     Uri url = Uri.parse(surl);
-                                        //     await launchUrl(url,
-                                        //         mode: LaunchMode
-                                        //             .externalApplication);
-                                        //   },
-                                        //   child: SvgPicture.asset(
-                                        //     'assets/github.svg',
-                                        //     width: 20,
-                                        //     height: 20,
-                                        //   ),
-                                        // ),
+
                                       ],
                                     )
                                   ],
@@ -428,21 +400,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                             ),
                                           ),
                                         ),
-                                        // GestureDetector(
-                                        //   onTap: () async {
-                                        //     String surl =
-                                        //         'https://github.com/varunc20101';
-                                        //     Uri url = Uri.parse(surl);
-                                        //     await launchUrl(url,
-                                        //         mode: LaunchMode
-                                        //             .externalApplication);
-                                        //   },
-                                        //   child: SvgPicture.asset(
-                                        //     'assets/github.svg',
-                                        //     width: 20,
-                                        //     height: 20,
-                                        //   ),
-                                        // ),
+
                                       ],
                                     )
                                   ],
@@ -474,6 +432,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                   ),
                                 ),
                               ),
+                              
                               Container(
                                 width: 150,
                                 margin: const EdgeInsets.only(
@@ -525,21 +484,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                                             ),
                                           ),
                                         ),
-                                        // GestureDetector(
-                                        //   onTap: () async {
-                                        //     String surl =
-                                        //         'https://www.amd.com/';
-                                        //     Uri url = Uri.parse(surl);
-                                        //     await launchUrl(url,
-                                        //         mode: LaunchMode
-                                        //             .externalApplication);
-                                        //   },
-                                        //   child: SvgPicture.asset(
-                                        //     '',
-                                        //     width: 20,
-                                        //     height: 20,
-                                        //   ),
-                                        // ),
+
                                       ],
                                     )
                                   ],
@@ -549,58 +494,7 @@ class _AppInfoScreenState extends State<AppInfoScreen> {
                           ),
                         ],
                       ),
-                      // Neumorphic(
-                      //   padding: const EdgeInsets.all(
-                      //     10,
-                      //   ),
-                      //   style: NeumorphicStyle(
-                      //     color: backgroundColor,
-                      //     intensity: 20,
-                      //     depth: 5,
-                      //   ),
-                      //   margin: const EdgeInsets.only(
-                      //     top: 20,
-                      //     left: 20,
-                      //     right: 20,
-                      //   ),
-                      //   child: Column(
-                      //     crossAxisAlignment: CrossAxisAlignment.start,
-                      //     children: [
-                      //       const Text(
-                      //         '',
-                      //         style: TextStyle(
-                      //           fontFamily: 'odibeeSans',
-                      //           fontSize: 30,
-                      //           color: Color.fromARGB(255, 0, 0, 0),
-                      //         ),
-                      //       ),
-                      //       Container(
-                      //         margin: const EdgeInsets.only(
-                      //           top: 10,
-                      //         ),
-                      //         child: const Text(
-                      //           '',
-                      //           style: TextStyle(
-                      //             fontSize: 10,
-                      //             color: Colors.black,
-                      //             fontWeight: FontWeight.w500,
-                      //           ),
-                      //           textAlign: TextAlign.justify,
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      // Container(
-                      //   alignment: Alignment.topLeft,
-                      //   margin: const EdgeInsets.only(
-                      //     top: 20,
-                      //     left: 20,
-                      //   ),
-                      //   child: SvgPicture.asset(
-                      //     'assets/made-with-love-in-india.svg',
-                      //   ),
-                      // ),
+   
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [

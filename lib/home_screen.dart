@@ -1,16 +1,24 @@
-import 'package:AgroLab/LoginPage.dart';
+import 'package:AgroCeres/LoginPage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
-import 'package:AgroLab/leaf_scan.dart';
+import 'marketplace.dart';
+import 'maps.dart';
+import 'package:AgroCeres/leaf_scan.dart';
 import 'functionality.dart';
 import 'app_info_screen.dart';
 import 'encyclopedia_screen.dart';
 import 'farmcalc.dart';
 import 'callhelp.dart';
+import 'redirect.dart';
 import 'ainews.dart';
+import 'bank.dart';
+import 'disease.dart';
+import 'language.dart';
+import 'locations.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -96,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -157,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            AgricultureHelplinePage(), // Replace with the login page widget
+                            SbiApiPage(), // Replace with the login page widget
                       ),
                     );
                   },
@@ -191,8 +199,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            AgricultureHelplinePage(), // Replace with the login page widget
+                        builder: (context) => TextDect(),
                       ),
                     );
                   },
@@ -227,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            AgricultureHelplinePage(), // Replace with the login page widget
+                            ImagePredictionPage(), // Replace with the login page widget
                       ),
                     );
                   },
@@ -262,7 +269,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            AgricultureHelplinePage(), // Replace with the login page widget
+                            ItemsPage(), // Replace with the login page widget
                       ),
                     );
                   },
@@ -297,7 +304,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            AgricultureHelplinePage(), // Replace with the login page widget
+                            const Encyclopedia(), // Replace with the login page widget
                       ),
                     );
                   },
@@ -307,14 +314,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SvgPicture.asset(
-                          'assets/invoicegen.svg',
+                          'assets/cropsugg.svg',
                           width: 75,
                           height: 75,
                         ),
                         Container(
                           margin: const EdgeInsets.only(top: 10),
                           child: const Text(
-                            'Invoice Generator',
+                            'Crop Suggest',
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w500,
@@ -331,7 +338,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            AgricultureNewsPage(), ///////////////////////////////////////////////////////////////////////////////////////////// Repla     ce with the login page widget
+                            const Encyclopedia(), ///////////////////////////////////////////////////////////////////////////////////////////// Repla     ce with the login page widget
                       ),
                     );
                   },
@@ -364,9 +371,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            const LeafScan(modelName: 'Potato'),
-                      ),
+                          builder: (context) => AgricultureHelplinePage()),
                     );
                   },
                   child: Neumorphic(
@@ -399,7 +404,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            FarmProduceProfitCalculator(), // Replace with the login page widget
+                            const Locss(), // Replace with the login page widget
                       ),
                     );
                   },
@@ -433,7 +438,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            AgricultureHelplinePage(), // Replace with the login page widget
+                            FarmerYearlyProfitCalculator(), // Replace with the login page widget
                       ),
                     );
                   },

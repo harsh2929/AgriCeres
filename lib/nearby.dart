@@ -53,8 +53,8 @@ class _FarmResourceListPageState extends State<FarmResourceListPage> {
                 MaterialPageRoute(
                   builder: (context) => FarmResourceDetailPage(
                     farmResource: farmResource,
-                  ),
-                ),
+                  ),      
+                ),        
               );
             },
           );
@@ -129,6 +129,32 @@ class FarmResourceDetailPage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     // TODO: Implement Google Cloud Earth API functionality for locating nearby farm resources
+                    // TODO: Import necessary packages
+
+class NearbyFarmsPage extends StatelessWidget {
+
+  // TODO: Authenticate with Google Cloud
+
+  // TODO: Implement method for searching nearby farms using Places API
+  Future<void> searchNearbyFarms(double latitude, double longitude) async {
+    // TODO: Implement logic for searching nearby farms using Places API
+    // You can use the http or dio package to make requests to the Places API
+    // and receive nearby farms based on the provided latitude and longitude
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // ...
+    ElevatedButton(
+      onPressed: () {
+        searchNearbyFarms(37.4219999, -122.0840575); // Example coordinates for Googleplex
+      },
+      child: Text('Search Nearby Farms'),
+    ),
+    // ...
+  }
+}
+
                   },
                   child: Text('Locate Nearby Farm Resources'),
                 ),

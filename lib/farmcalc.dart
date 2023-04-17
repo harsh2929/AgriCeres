@@ -1,35 +1,94 @@
 import 'package:flutter/material.dart';
 
-class FarmProduceProfitCalculator extends StatefulWidget {
+class FarmerYearlyProfitCalculator extends StatefulWidget {
   @override
-  _FarmProduceProfitCalculatorState createState() =>
-      _FarmProduceProfitCalculatorState();
+  _FarmerYearlyProfitCalculatorState createState() =>
+      _FarmerYearlyProfitCalculatorState();
 }
 
-class _FarmProduceProfitCalculatorState
-    extends State<FarmProduceProfitCalculator> {
-  TextEditingController _costController = TextEditingController();
-  TextEditingController _quantityController = TextEditingController();
-  TextEditingController _priceController = TextEditingController();
-  TextEditingController _fertilizerController = TextEditingController();
-  TextEditingController _seedController = TextEditingController();
-  TextEditingController _harvestingController = TextEditingController();
-  double _profit = 0.0;
+//adding moe variables 
+class _FarmerYearlyProfitCalculatorState
+    extends State<FarmerYearlyProfitCalculator> {
+  TextEditingController _cropSalesQuantityController = TextEditingController();
+  TextEditingController _cropSalesPriceController = TextEditingController();
+  TextEditingController _cropProductionCostController =
+      TextEditingController();
+  TextEditingController _fertilizerCostController = TextEditingController();
+  TextEditingController _seedCostController = TextEditingController();
+  TextEditingController _harvestingCostController = TextEditingController();
+  TextEditingController _irrigationCostController = TextEditingController();
+  TextEditingController _laborCostController = TextEditingController();
+  TextEditingController _pestControlCostController = TextEditingController();
+  TextEditingController _storageCostController = TextEditingController();
+  TextEditingController _transportationCostController =
+      TextEditingController();
+  TextEditingController _marketingCostController = TextEditingController();
+  TextEditingController _interestAndFinanceChargesController =
+      TextEditingController();
+  TextEditingController _taxesAndInsuranceController =
+      TextEditingController();
+  TextEditingController _equipmentAndMachineryCostsController =
+      TextEditingController();
+  TextEditingController _miscellaneousCostsController =
+      TextEditingController();
+  TextEditingController _loanAmountController = TextEditingController();
+
+  double _totalCropSales = 0.0;
+  double _totalVariableCosts = 0.0;
+  double _totalCosts = 0.0;
+  double _totalProfit = 0.0;
 
   void _calculateProfit() {
-    double cost = double.tryParse(_costController.text) ?? 0.0;
-    double quantity = double.tryParse(_quantityController.text) ?? 0.0;
-    double price = double.tryParse(_priceController.text) ?? 0.0;
-    double fertilizerCost = double.tryParse(_fertilizerController.text) ?? 0.0;
-    double seedCost = double.tryParse(_seedController.text) ?? 0.0;
-    double harvestingCost = double.tryParse(_harvestingController.text) ?? 0.0;
+    double cropSalesQuantity =
+        double.tryParse(_cropSalesQuantityController.text) ?? 0.0;
+    double cropSalesPrice =
+        double.tryParse(_cropSalesPriceController.text) ?? 0.0;
+    double cropProductionCost =
+        double.tryParse(_cropProductionCostController.text) ?? 0.0;
+    double fertilizerCost =
+        double.tryParse(_fertilizerCostController.text) ?? 0.0;
+    double seedCost = double.tryParse(_seedCostController.text) ?? 0.0;
+    double harvestingCost =
+        double.tryParse(_harvestingCostController.text) ?? 0.0;
+    double irrigationCost =
+        double.tryParse(_irrigationCostController.text) ?? 0.0;
+    double laborCost = double.tryParse(_laborCostController.text) ?? 0.0;
+    double pestControlCost =
+        double.tryParse(_pestControlCostController.text) ?? 0.0;
+    double storageCost = double.tryParse(_storageCostController.text) ?? 0.0;
+    double transportationCost =
+        double.tryParse(_transportationCostController.text) ?? 0.0;
+    double marketingCost =
+        double.tryParse(_marketingCostController.text) ?? 0.0;
+    double interestAndFinanceCharges =
+        double.tryParse(_interestAndFinanceChargesController.text) ?? 0.0;
+    double taxesAndInsurance =
+        double.tryParse(_taxesAndInsuranceController.text) ?? 0.0;
+    double equipmentAndMachineryCosts =
+        double.tryParse(_equipmentAndMachineryCostsController.text) ?? 0.0;
+    double miscellaneousCosts =
+        double.tryParse(_miscellaneousCostsController.text) ?? 0.0;
+    double loanAmount = double.tryParse(_loanAmountController.text) ?? 0.0;
 
     setState(() {
-      _profit = (price * quantity) -
-          cost -
-          fertilizerCost -
-          seedCost -
-          harvestingCost;
+      _totalCropSales = cropSalesQuantity * cropSalesPrice;
+      _totalVariableCosts = cropProductionCost +
+          fertilizerCost +
+          seedCost +
+          harvestingCost +
+          irrigationCost +
+laborCost +
+          pestControlCost +
+          storageCost +
+          transportationCost +
+          marketingCost +
+          interestAndFinanceCharges +
+          taxesAndInsurance +
+          equipmentAndMachineryCosts +
+          miscellaneousCosts;
+
+      _totalCosts = _totalVariableCosts + loanAmount;
+      _totalProfit = _totalCropSales - _totalCosts;
     });
   }
 
@@ -37,69 +96,125 @@ class _FarmProduceProfitCalculatorState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Farm Produce Profit Calculator'),
+        title: Text('Farmer Yearly Profit Calculator'),
       ),
-      body: Container(
+      body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             TextField(
-              controller: _costController,
+              controller: _cropSalesQuantityController,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Cost per unit',
-              ),
+              decoration: InputDecoration(labelText: 'Crop Sales Quantity'),
             ),
-            SizedBox(height: 16.0),
             TextField(
-              controller: _quantityController,
+              controller: _cropSalesPriceController,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Quantity produced',
-              ),
+              decoration: InputDecoration(labelText: 'Crop Sales Price'),
             ),
-            SizedBox(height: 16.0),
             TextField(
-              controller: _priceController,
+              controller: _cropProductionCostController,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Price per unit',
-              ),
+              decoration: InputDecoration(labelText: 'Crop Production Cost'),
             ),
-            SizedBox(height: 16.0),
             TextField(
-              controller: _fertilizerController,
+              controller: _fertilizerCostController,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Fertilizer cost',
-              ),
+              decoration: InputDecoration(labelText: 'Fertilizer Cost'),
             ),
-            SizedBox(height: 16.0),
             TextField(
-              controller: _seedController,
+              controller: _seedCostController,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Seed cost',
-              ),
+              decoration: InputDecoration(labelText: 'Seed Cost'),
             ),
-            SizedBox(height: 16.0),
             TextField(
-              controller: _harvestingController,
+              controller: _harvestingCostController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: 'Harvesting Cost'),
+            ),
+            TextField(
+              controller: _irrigationCostController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: 'Irrigation Cost'),
+            ),
+            TextField(
+              controller: _laborCostController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: 'Labor Cost'),
+            ),
+            TextField(
+              controller: _pestControlCostController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: 'Pest Control Cost'),
+            ),
+            TextField(
+              controller: _storageCostController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: 'Storage Cost'),
+            ),
+            TextField(
+              controller: _transportationCostController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: 'Transportation Cost'),
+            ),
+            TextField(
+              controller: _marketingCostController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: 'Marketing Cost'),
+            ),
+            TextField(
+              controller: _interestAndFinanceChargesController,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                labelText: 'Harvesting cost',
-              ),
+                  labelText: 'Interest and Finance Charges'),
+            ),
+            TextField(
+              controller: _taxesAndInsuranceController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: 'Taxes and Insurance'),
+            ),
+            TextField(
+              controller: _equipmentAndMachineryCostsController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                  labelText: 'Equipment and Machinery Costs'),
+            ),
+            TextField(
+              controller: _miscellaneousCostsController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: 'Miscellaneous Costs'),
+            ),
+            TextField(
+              controller: _loanAmountController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: 'Loan Amount'),
             ),
             SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: _calculateProfit,
+              onPressed: () {
+                setState(() {
+                  _calculateProfit();
+                });
+              },
               child: Text('Calculate Profit'),
             ),
             SizedBox(height: 16.0),
             Text(
-              'Profit: \$$_profit',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+              'Total Crop Sales: \$$_totalCropSales',
+              style: TextStyle(fontSize: 18.0),
+            ),
+            Text(
+              'Total Variable Costs: \$$_totalVariableCosts',
+              style: TextStyle(fontSize: 18.0),
+            ),
+            Text(
+              'Total Costs: \$$_totalCosts',
+              style: TextStyle(fontSize: 18.0),
+            ),
+            Text(
+              'Total Profit: \$$_totalProfit',
+              style: TextStyle(fontSize: 18.0),
             ),
           ],
         ),

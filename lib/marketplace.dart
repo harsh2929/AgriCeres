@@ -1,115 +1,176 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class AgricultureDataPage extends StatefulWidget {
-  @override
-  _AgricultureDataPageState createState() => _AgricultureDataPageState();
+class Item {
+  final String title;
+  final String description;
+  final double price;
+  final String status;
+
+  Item({required this.title, required this.description, required this.price, required this.status});
+
+  factory Item.fromSnapshot(DocumentSnapshot snapshot) {
+    Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+    return Item(
+      title: data['title'],
+      description: data['description'],
+      price: data['price'],
+      status: data['status'],
+    );
+  }
 }
 
-class _AgricultureDataPageState extends State<AgricultureDataPage> {
-  CollectionReference _farmDataCollection =
-      FirebaseFirestore.instance.collection('farmData'); // Collection reference to farm data in Firestore
+class ItemsPage extends StatefulWidget {
+  @override
+  _ItemsPageState createState() => _ItemsPageState();
+}
 
-  void _addFarmData() {
-    // Implement the logic to add farm data to Firestore
-    // Example: Adding farm data to Firestore
-    FarmData farmData = FarmData(
-      crop: 'Corn',
-      temperature: 28.5,
-      humidity: 60.2,
-      soilMoisture: 35.8,
-    );
-    _farmDataCollection.add(farmData.toMap());
-  }
-
-  void _updateFarmData(String docId) {
-    // Implement the logic to update farm data in Firestore
-    // Example: Updating farm data in Firestore
-    FarmData farmData = FarmData(
-      crop: 'Wheat',
-      temperature: 25.3,
-      humidity: 70.1,
-      soilMoisture: 42.5,
-    );
-    _farmDataCollection.doc(docId).update(farmData.toMap());
-  }
-
-  void _deleteFarmData(String docId) {
-    // Implement the logic to delete farm data from Firestore
-    // Example: Deleting farm data from Firestore
-    _farmDataCollection.doc(docId).delete();
-  }
-
+class _ItemsPageState extends State<ItemsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Agriculture Data'),
+        title: Text('Items'),
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: _farmDataCollection.snapshots(),
-        builder: (context, snapshot) {
+        stream: FirebaseFirestore.instance.collection('items').snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+            return Center(child: CircularProgressIndicator());
           }
 
-          if (snapshot.hasData && snapshot.data.docs.length == 0) {
-            return Center(
-              child: Text('No farm data available.'),
-            );
-          }
+          return ListView(
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              Item item = Item.fromSnapshot(document);
 
-          return ListView.builder(
-            itemCount: snapshot.data.docs.length,
-            itemBuilder: (context, index) {
-              DocumentSnapshot document = snapshot.data.docs[index];
-              FarmData farmData = FarmData.fromMap(document.data());
               return ListTile(
-                title: Text('Crop: ${farmData.crop}'),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Temperature: ${farmData.temperature}°C'),
-                    Text('Humidity: ${farmData.humidity}%'),
-                    Text('Soil Moisture: ${farmData.soilMoisture}%'),
-                  ],
-                ),
-                trailing: IconButton(
-                  icon: Icon(Icons.delete),
-                  onPressed: () {
-                    _deleteFarmData(document.id);
-                  },
-                ),
+                title: Text(item.title),
+                subtitle: Text(item.description),
+                trailing: Text('\$${item.price.toStringAsFixed(2)}'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ItemDetailsPage(item: item)),
+                  );
+                },
               );
-            },
+            }).toList(),
           );
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: _addFarmData,
       ),
     );
   }
 }
 
-class FarmData {
-  final String crop;
-  final double temperature;
-  final double humidity;
-  final double soilMoisture;
+class ItemDetailsPage extends StatefulWidget {
+  final Item item;
 
-  FarmData({this.crop, this.temperature, this.humidity, this.soilMoisture});
+  ItemDetailsPage({required this.item});
 
-  // Convert FarmData object to a Map
-  Map<String, dynamic> toMap() {
-    return {
-      'crop': crop,
-      'temperature': temperature,
-      'humidity': humidity
+  @override
+  _ItemDetailsPageState createState() => _ItemDetailsPageState();
+}
+
+class _ItemDetailsPageState extends State<ItemDetailsPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.item.title),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Description:'),
+            Text(widget.item.description),
+            SizedBox(height: 16.0),
+            Text('Price: \$${widget.item.price.toStringAsFixed(2)}'),
+            SizedBox(height: 16.0),
+            ElevatedButton(
+              onPressed: () {
+                _handleBuySell(widget.item); // Handle buy/sell operation
+              },
+              child: Text('Buy/Sell'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _handleBuySell(Item item) async {
+    try {
+      if (item.status == 'available') {
+        // Perform buy operation
+        // Update item status in Firebase
+        await FirebaseFirestore.instance.collection('items').doc(item.title).update({'status': 'sold'});
+
+        // Show success dialog
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Success'),
+              content: Text('You have bought the item ${item.title}.'),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context); // Close dialog
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+      } else {
+// Perform sell operation
+        // Update item status in Firebase
+        await FirebaseFirestore.instance.collection('items').doc(item.title).update({'status': 'available'});
+
+        // Show success dialog
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Success'),
+              content: Text('You have sold the item ${item.title}.'),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context); // Close dialog
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('An error occurred. Please try again later.'),
+            actions: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context); // Close dialog
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
+}

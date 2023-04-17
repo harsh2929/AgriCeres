@@ -1,0 +1,11 @@
+0 cherry_midew
+1 potato_lateblight
+2 corn_healthy
+3 grape_healthy
+4 apple_healthy
+5 cherry_healthy
+6 potato_healthy
+7 apple_blackrot
+8 apple_scab
+9 corn_rust
+10 corn_cercospora
