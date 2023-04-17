@@ -13,6 +13,8 @@ flutter run
 
 ## Usage
 
+Submitted for Google hackathon on 16-april
+
 
 ## Contributing
 
