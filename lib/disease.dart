@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
-//gcloud link --@> 
+//gcloud link 
 /*
 https://console.cloud.google.com/vertex-ai/locations/us-central1/models/2433221431291543552/versions/1/deploy?project=fleet-cyclist-383115
 *\
