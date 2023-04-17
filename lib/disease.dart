@@ -4,7 +4,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
 //gcloud link 
 
-/* https://console.cloud.google.com/vertex-ai/locations/us-central1/models/2433221431291543552/versions/1/deploy?project=fleet-cyclist-383115
+/* "" https://console.cloud.google.com/vertex-ai/locations/us-central1/models/2433221431291543552/versions/1/deploy?project=fleet-cyclist-383115
+""
  *\
 
 class ImagePredictionPage extends StatefulWidget {
